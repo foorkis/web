@@ -1,0 +1,9 @@
+body {background:lightblue}
+pre,p {color:darkblue}  
+#c1,#c2,#c3 {display: inline-block;vertical-align: top}
+#c1 {
+	width: auto;
+}
+#c2, #c3 {
+  width: 500px;
+}

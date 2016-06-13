@@ -1,0 +1,19 @@
+body {background:lightblue}
+pre,p {color:darkblue}  
+table {
+  width: 100%; /* растягиваем таблицу на всю ширину контента */
+  border-collapse: collapse; /* схлопываем границы ячеек */
+}
+table td {
+  padding: 0 10px; /* для красоты добавляем отступы в ячейках */
+}
+
+table * {
+	vertical-align: top;
+}
+table td {
+  width: 400px;
+}
+table td:first-child {
+  width: auto;
+}

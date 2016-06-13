@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+    <title>Тестирование по С++</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="description" >
+        <link rel="stylesheet" href="design.css" >
+    </head>
+    
+    
+    <body>
+        
+        <div id="content"> <h1 align = "center">Типы данных в С++ </h1> 
+           <form name="test"> 
+             <div class="el"> <h2>1. Целочисленный (символьный) тип данных в c++ это:</h2>
+               <label><input type="radio" name="ch0" value="1"/>char</label>
+               <label><input type="radio" name="ch0" value="0"/>int</label>
+               <label><input type="radio" name="ch0" value="0"/>bool</label>
+               <label><input type="radio" name="ch0" value="0"/>string</label>
+               </div>
+               
+             <div class="el">    <h2>2. Целочисленный (логический) тип данных в с++ это:</h2>
+               <label><input type="radio" name="ch1" value="0"/>char</label>
+               <label><input type="radio" name="ch1" value="0"/>int</label>
+               <label><input type="radio" name="ch1" value="1"/>bool</label>
+               <label><input type="radio" name="ch1" value="0"/>string</label>
+               </div>
+            <div class="el">     <h2>3. Тип данных с плавающей точкой размером в 4 байта это:</h2>
+               <label><input type="radio" name="ch2" value="0"/>int</label>
+               <label><input type="radio" name="ch2" value="1"/>float</label>
+               <label><input type="radio" name="ch2" value="0"/>double</label>
+               <label><input type="radio" name="ch2" value="0"/>long float</label>
+          </div> 
+            <div class="el">     <h2>4. Какой самый распространенный тип данных который вы использовали в лабораторных работах по C++?</h2>
+               <label><input type="radio" name="ch3" value="1"/>int</label>
+               <label><input type="radio" name="ch3" value="0"/>double</label>
+               <label><input type="radio" name="ch3" value="0"/>float</label>
+               <label><input type="radio" name="ch3" value="0"/>bool</label>
+          </div>
+          <div id="rezbutton" align="center">
+            <input type="button" name="simb" onclick="check()" value="Проверить ответы"/>
+          </div>
+          </form>
+        </div>
+                  
+<script>   
+function check() {
+    var elements = document.querySelectorAll('.el'), total = 0, highest = 0;
+    for (var i = 0; i < elements.length; i++) {
+        var err = true,
+            list = elements[i].querySelectorAll('input[type="radio"]');
+        for (var j = 0; j < list.length; j++) {
+            var input = list[j];
+            if (input.checked == true) {
+                total += input.value * 1;
+                err = false;
+                highest += 1;
+            }
+        }
+        if (err == true) {
+            alert('Выбраны не все ответы!');
+            return false;
+        }
+    }
+    alert("Ваш результат: " + total + " баллов из " + highest);
+    if (total < 2) {
+        alert("Вы не сдали ");
+    } else if (total == 4) {
+        alert("Вы сдали этот тест, можете переходить к следующему");
+    }
+}
+    
+    </script>
+    </body>
+</html>

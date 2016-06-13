@@ -1,0 +1,5 @@
+body {background:#f5f5f5}
+
+a {color: forestgreen; /* Цвет ссылок */} 
+a:active {color: green; /* Цвет активных ссылок */}
+a:hover{color: blue}   

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+    <title>Регистрация</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="description" >
+
+    </head>
+
+    <body>
+
+        <form OnSubmit='return test();' method='POST' autocomplete="on";>
+            <table bgcolor='skyblue' border='0px' style="width:600px; margin: 20px auto; border-radius: 10px;padding: 20px">
+               <tr><th align='center' colspan="2"><h1>Регистрация</h1></th></tr>
+                <tr>
+                    <td><label for="login"> Логин </label></td>
+                    <td> <input type="text" name="login" id="login" required onkeydown="return proverkaforlogin(this);" onkeyup="return proverkaforlogin(this);" > </td>
+                </tr>
+                
+                <tr>
+                    <td><label for="pass"> Пароль </label></td>
+                    <td><input type="password" name="pass" id="pass" class = 'cl0' required/> </td>
+                </tr>
+                    
+                <tr>
+                    <td><label for="pass-repeat">Повторите</label></td>
+                    <td><input type="password" name="pass-repeat" id="pass-repeat" onkeyup="test()" class = 'cl0' required/>    <span id="repass_correct"><br/></span>  </td>           
+                </tr>
+                    
+                <tr>
+                    <td><label for="email">Эл. почта</label></td>
+                    <td><input type="email" name="email" id="email" required/ onkeydown="proverkaforemail(this)" onkeyup="proverkaforemail(this)" ><span id="email-xah"></span></td>
+                </tr>   
+                
+                <tr>
+                    <td><label for="name">Имя</label></td>
+                    <td><input type="text" name="name" id="name" required/ onkeydown="return proverkaforname(this);" onkeyup="return proverkaforname(this);"></td>
+                </tr>
+                
+                <tr>    
+                    <td><label for="surname">Фамилия</label></td>
+                    <td><input type="text" name="surname" id="surname" required/ onkeydown="return proverkaforname(this);" onkeyup="return proverkaforname(this);"></td>
+                </tr>
+                    
+                <tr><td><input type="submit" name="submit"  value="Регистрация"value="Зарегистрироваться"/>   </td></tr>
+            </table>
+        </form>
+        
+            <script> 
+
+function proverkaforemail(input) {
+    var r = /^\w+@\w+\.\w{2,4}$/i;
+    var item_correct = 'email';
+    if (!r.test(document.forms.myForm.email.value)) {
+        document.getElementById("email-xah").innerHTML = 'Не верно';
+    } else
+        document.getElementById("email-xah").innerHTML = '';
+}
+
+function proverkaforlogin(input) {
+                                input.value = input.value.replace(/[а-яА-Я !-,.\/:-@\'^]/, "");
+};
+function proverkaforname(input) { input.value = input.value.trim(); };
+
+function test() {
+
+    // записываем в переменную значение введенного пароля
+    var item_pass_value = document.getElementById('pass').value;
+
+    // записываем в переменную кол-во символов введенного пароля
+    var item_pass_length =
+        document.getElementById('pass').value.length;
+
+        // определяем переменную для показа сообщения об ошибке
+        var item_correct = 'repass_correct';
+
+    // проверяем совпадают ли значения введеных паролей
+    if ((document.getElementById('pass-repeat').value == item_pass_value) &&
+        (item_pass_length > 5)) {
+        // если совпадают, сообщаем об этом
+        document.getElementById(item_correct).innerHTML = 'совпадают';
+        return true;
+    }
+    // если введенный пароль меньше 6 символов и не совпадает
+    else {
+        document.getElementById(item_correct).innerHTML = 'Не совпадают';
+        document.getElementById('pass-repeat').className = 'cl2';
+        return false;
+    }
+}  
+            </script>
+        </body>
+</html>
