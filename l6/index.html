@@ -1,70 +1,150 @@
 <!DOCTYPE html>
 <html>
-  
-  <head>
+
+<head>
     <title>Регистрация</title>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" >
-
-  </head>
-
-  <body>
-
-    <form OnSubmit='return Validate(this);' method='POST' autocomplete="on";>
-      <table bgcolor='skyblue' border='0px' style="width:600px; margin: 20px auto; border-radius: 10px;padding: 20px">
-        <tr><th align='center' colspan="2"><h1>Регистрация</h1></th></tr>
-        <tr>
-          <td>Логин</td><td><input type='text' name='username' id='username'/></td>
-        </tr>
-        <tr>
-          <td>Пароль</td><td><input type='password' name='pass' id='pass'/></td>
-        </tr>
-        <tr>
-          <td>Подтвердите пароль</td><td><input type='password' name='passagain' id='passagain'/></td>
-        </tr>
-        <tr>
-          <td>E-mail</td><td><input type='text' name='mail' id='mail'/></td>
-        </tr>
-        <tr>
-          <td>Фамилия</td><td><input type='text' name='fam' id='fam'/></td>
-        </tr>
-        <tr>
-          <td>Имя</td><td><input type='text' name='name' id='name'/></td>
-        </tr>
-        <tr><td><input type='submit' value='регистрация'/></td></tr>
-      </table>
-    </form>
+    <style>
+    .registration_table {
+        font-size: 18px;
+        width: 600px;
+        margin: 20px auto;
+        border-radius: 10px;
+        padding: 20px;
+        background-color: #F3F3F3;
+        border-spacing: 0px;
+        border-collapse: collapse;
+    }
     
-    <script> 
-      function Validate(obj) {
-      var username = obj.username.value;
-      var pass = obj.pass.value;
-      var passagain = obj.passagain.value;
-      var mail = obj.mail.value;
-      var errors = "";
-      if (username == "" || pass == "" || passagain == "" || mail == "") {
-      alert("Все поля должны быть заполнены!");
-      return false;
-      }
-      if (pass != passagain) {
-      errors += "Пароли не совпадают!\n";
-      }
-      if (pass.length < 6) {
-			errors += "Слишком короткий пароль!\n";
-			}
-			var reg = /^\w+@\w+\.\w{2,4}$/i;
-			if (!reg.test(mail)) {
-			errors += "Неправильный e-mail адрес!\n";
-			}
+    .registration_table .invalid_field {
+        color: red;
+    }
+    
+    .registration_table .invalid_field input {
+        border: 1px solid red;
+    }
+    
+    .registration_table td {
+        padding: 4px 10px;
+    }
+    
+    .registration_table .head h1 {
+        margin-bottom: 0;
+    }
+    </style>
+</head>
 
-			if (errors == "")
-			return true;
-			else {
-			alert(errors);
-			return false;
-			}
-			}
-			</script>
-  </body>
+<body>
+    <form OnSubmit='return Validate(this);' method='POST'>
+        <table class="registration_table">
+            <tr>
+                <td colspan="3" class="head">
+                    <h1>Регистрация</h1>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="login">Логин</label>
+                </td>
+                <td>
+                    <input type="text" name="login" id="login" />
+                </td>
+                <td>
+                    &nbsp;
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="pass">Пароль</label>
+                </td>
+                <td>
+                    <input type="password" name="pass" id="pass" />
+                </td>
+                <td>
+                    &nbsp;
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="pass-repeat">Повтор пароля</label>
+                </td>
+                <td>
+                    <input type="password" name="pass_repeat" id="pass_repeat" />
+                </td>
+                <td>
+                    &nbsp;
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="email">Эл. почта</label>
+                </td>
+                <td>
+                    <input type="email" name="email" id="email" />
+                </td>
+                <td>
+                    &nbsp;
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="name">Имя</label>
+                </td>
+                <td>
+                    <input type="text" name="name" id="name" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="surname">Фамилия</label>
+                </td>
+                <td>
+                    <input type="text" name="surname" id="surname" />
+                </td>
+                <td>
+                    &nbsp;
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    &nbsp;
+                </td>
+                <td colspan="2">
+                    <input type="submit" name="submit" value="Регистрация" value="Зарегистрироваться" />
+                </td>
+            </tr>
+        </table>
+    </form>
+    <script>
+    function Validate(obj) {
+        var username = obj.name.value;
+        var pass = obj.pass.value;
+        var passagain = obj.pass_repeat.value;
+        var mail = obj.email.value;
+        var errors = "";
+        if (username == "" || pass == "" || passagain == "" || mail == "") {
+            alert("Все поля должны быть заполнены!");
+            return false;
+        }
+        if (pass != passagain) {
+            errors += "Пароли не совпадают!\n";
+        }
+        if (pass.length < 6) {
+            errors += "Слишком короткий пароль!\n";
+        }
+        var reg = /^\w+@\w+\.\w{2,4}$/i;
+        if (!reg.test(mail)) {
+            errors += "Неправильный e-mail адрес!\n";
+        }
+
+        if (errors == "")
+            return true;
+        else {
+            alert(errors);
+            return false;
+        }
+    }
+    </script>
+</body>
+
 </html>
