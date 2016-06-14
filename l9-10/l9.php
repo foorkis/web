@@ -107,8 +107,8 @@ if(isset($_POST['submit'])) { //Если нажали «Зарегистриро
 </head>
 
 <body>
-    <form method='POST'>
-        <table class="registration_table" action="<?=$_SERVER['PHP_SELF']?>">
+    <form method='POST' action="<?=$_SERVER['PHP_SELF']?>">
+        <table class="registration_table" >
             <tr>
                 <td colspan="3" class="head">
                     <h1>Регистрация</h1>
